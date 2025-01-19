@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Stay - Travel Experiences</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --orange: #ff6b00;
+            --orange-light: #ff8533;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--orange);
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--orange);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--orange); /* Changed to orange */
+            position: relative;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--orange);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                        url('https://drjimmastrich.com/wp-content/uploads/2009/07/AdobeStock_338736832-960x640-1-1.jpg') center/cover;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.2s forwards;
+        }
+
+        .search-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.4s forwards;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            background: #f8f9fa;
+            transition: background 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: #fff;
+            box-shadow: inset 0 0 0 2px var(--orange);
+        }
+
+        .search-btn {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .search-btn:hover {
+            background: var(--orange-light);
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        
+        .stats h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+        
+        .stats p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.2s forwards;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--orange);
+        }
+        
+        .stat-header p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-value p {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--orange);
+        }
+        
+        .stat-value span {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        @keyframes fadeUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-copy {
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+        .leaderboard {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        
+        .leaderboard h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+        
+        .leaderboard p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.2s forwards;
+        }
+        
+        .activity-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .activity-btn {
+            background-color: var(--orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .activity-btn:hover {
+            background-color: var(--orange-light);
+        }
+        
+        .leaderboard {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        
+        .leaderboard h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+        
+        .leaderboard p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.2s forwards;
+        }
+        
+        .activity-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .activity-btn {
+            background-color: var(--orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .activity-btn:hover {
+            background-color: var(--orange-light);
+        }
+        
+        .leaderboard-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .leaderboard-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            display: block;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f7f7f7;
+            font-weight: bold;
+        }
+        
+        td {
+            background-color: #fff;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        @keyframes fadeUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+      
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-dot"></div>
+                <span>ARCoach</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/coach">Live Coach</a>
+                <a href="/student">Student Space</a>
+                <a href="/stats">General Stats</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="stats">
+        <br></br>
+        <br></br>
+        <h1>Performance Insights <span style="color: var(--orange)">ARCoach</span></h1>
+        <p>Track the key metrics of your progress and performance with ARCoach's cutting-edge statistics engine.</p>
+    
+        <div class="stats-container">
+            <!-- Stat 1: Workout Accuracy -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Workout Accuracy</h3>
+                    <p>Measure the precision of every rep and set with real-time feedback.</p>
+                </div>
+                <div class="stat-value">
+                    <p>98% <span>accuracy</span></p>
+                </div>
+            </div>
+    
+            <!-- Stat 2: Progress Over Time -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Progress Over Time</h3>
+                    <p>See how your performance improves with detailed historical data.</p>
+                </div>
+                <div class="stat-value">
+                    <p>+25% <span>Improvement</span></p>
+                </div>
+            </div>
+    
+            <!-- Stat 3: Coach Insights -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Coach Insights</h3>
+                    <p>Get in-depth analytics on your form, speed, and endurance.</p>
+                </div>
+                <div class="stat-value">
+                    <p>80% <span>Improved Form</span></p>
+                </div>
+            </div>
+    
+            <!-- Stat 4: Time Spent -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Time Spent Training</h3>
+                    <p>Track your commitment and dedication through weekly training time.</p>
+                </div>
+                <div class="stat-value">
+                    <p>50+ <span>hours</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="leaderboard">
+        <br><br>
+        <h1>Top Performers <span style="color: var(--orange)">ARCoach</span></h1>
+        <p>Check out the best performances in various activity types. Switch between them to see the rankings.</p>
+    
+        <div class="activity-selector">
+            <button class="activity-btn" data-activity="workout">Workout</button>
+            <button class="activity-btn" data-activity="run">Running</button>
+            <button class="activity-btn" data-activity="cycling">Cycling</button>
+        </div>
+    
+        <div class="leaderboard-container">
+            <div class="leaderboard-card" data-activity="workout">
+                <h3>Top 5 Workouts</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>50 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>48 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Alex Johnson</td>
+                            <td>45 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Emily Davis</td>
+                            <td>42 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Chris Lee</td>
+                            <td>40 Reps</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="leaderboard-card" data-activity="run" style="display:none;">
+                <h3>Top 5 Runners</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Distance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sarah Kim</td>
+                            <td>12.5 km</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Robert White</td>
+                            <td>11.8 km</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mia Brown</td>
+                            <td>11.5 km</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Michael Green</td>
+                            <td>11.2 km</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Laura Scott</td>
+                            <td>11.0 km</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="leaderboard-card" data-activity="cycling" style="display:none;">
+                <h3>Top 5 Cyclists</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Distance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Jack Taylor</td>
+                            <td>50 km</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Laura Kim</td>
+                            <td>47 km</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Steve Harris</td>
+                            <td>45 km</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Nicole Adams</td>
+                            <td>42 km</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Daniel Martinez</td>
+                            <td>40 km</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="logo-dot"></div>
+                <span>ARCoach</span>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 ARCoach. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animate cards on scroll
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${index * 0.2}s`;
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        cards.forEach(card => observer.observe(card));
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+
+        // Add hover animation to search button
+        const searchBtn = document.querySelector('.search-btn');
+        searchBtn.addEventListener('mouseover', () => {
+            searchBtn.style.transform = 'translateY(-5px) scale(1.05)';
+        });
+        searchBtn.addEventListener('mouseout', () => {
+            searchBtn.style.transform = 'translateY(0) scale(1)';
+        });
+
+        // Add typing animation to search input
+        const searchInputs = document.querySelectorAll('.search-input');
+        searchInputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.style.transition = 'all 0.3s ease';
+                input.style.transform = 'scale(1.05)';
+            });
+            input.addEventListener('blur', () => {
+                input.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

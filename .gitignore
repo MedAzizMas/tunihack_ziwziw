@@ -1,0 +1,45 @@
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+*.env
+
+# Log files
+*.log
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Node.js
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Python caches
+*.egg-info/
+.eggs/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.pid
+
+# Secret files
+*.key
+*.crt
+*.pem

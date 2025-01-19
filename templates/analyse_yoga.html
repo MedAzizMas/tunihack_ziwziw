@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href='{{ url_for('static',filename='css/specific_yoga.css') }}'>
+    <style>
+        .yoga-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .video-section {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .video-feed {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accuracy-display {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .gif-reference {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="yoga-head">Vrksasana Asana</h2>
+    <hr class="hr">
+    
+    <div class="yoga-container">
+        <div class="video-section">
+            <!-- Video feed with explicit dimensions -->
+            <img id="videoFeed" class="video-feed" src="{{ url_for('video') }}" alt="Yoga Pose Analysis">
+            
+            <!-- Accuracy overlay -->
+            <div class="accuracy-display">
+                <div>Accuracy</div>
+                <div id="accuracyValue" style="font-size: 24px; font-weight: bold;">0%</div>
+            </div>
+            
+            <!-- Reference GIF 
+            <div class="gif-reference">
+                <img src="{{url_for('static', filename='images/gif3.gif')}}" alt="Vrksana" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>-->
+        </div>
+        
+        <form action="/charts">
+            <button class="chart-button">See Your Accuracy</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to update accuracy
+        async function updateAccuracy() {
+            try {
+                const response = await fetch('/get_accuracy');
+                const data = await response.json();
+                document.getElementById('accuracyValue').textContent = 
+                    `${data.accuracy.toFixed(1)}%`;
+            } catch (error) {
+                console.error('Error fetching accuracy:', error);
+            }
+        }
+
+        // Function to check if video feed is working
+        function checkVideoFeed() {
+            const videoImg = document.getElementById('videoFeed');
+            if (videoImg.naturalWidth === 0) {
+                // If video feed fails, try to reload it
+                videoImg.src = "{{ url_for('video') }}?" + new Date().getTime();
+            }
+        }
+
+        // Update accuracy every 500ms
+        setInterval(updateAccuracy, 500);
+        
+        // Check video feed every 5 seconds
+        setInterval(checkVideoFeed, 5000);
+    </script>
+</body>
+</html>

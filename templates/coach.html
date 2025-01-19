@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCoach - Start Session</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --orange: #ff6b00;
+            --orange-light: #ff8533;
+            --background-light: #f8f9fa;
+            --text-gray: #666;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-gray);
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: white;
+            box-shadow: 0 2px 10px var(--shadow);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--orange);
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--orange);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .hero {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                        url('https://drjimmastrich.com/wp-content/uploads/2009/07/AdobeStock_338736832-960x640-1-1.jpg') center/cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .start-session-btn {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .start-session-btn:hover {
+            background: var(--orange-light);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 -5px 20px var(--shadow);
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-copy {
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .start-session-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-dot"></div>
+                <span>ARCoach</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/coach">Live Coach</a>
+                <a href="/student">Student Space</a>
+                <a href="/stats">General Stats</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to ARCoach</h1>
+        <p>Experience next-level coaching with augmented reality and AI integration. Start now!</p>
+        <button class="start-session-btn">Start Session</button>
+        <!-- Added this new div for video -->
+        <div id="video-container" style="display: none;">
+            <img id="video-feed" style="max-width: 100%; height: auto;">
+        </div>
+    </section>
+
+    
+    <style>
+
+       
+    #video-container {
+        margin-top: 2rem;
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    #video-feed {
+        border-radius: 10px;
+        box-shadow: 0 4px 10px var(--shadow);
+        max-width: 800px;
+        width: 100%;
+    }
+    </style>
+    
+    <script>
+        document.querySelector('.start-session-btn').addEventListener('click', function() {
+            // Hide the button
+            this.style.display = 'none';
+            
+            // Show the video container
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.style.display = 'block';
+            
+            // Connect to video stream
+            const videoFeed = document.getElementById('video-feed');
+            videoFeed.src = '/video_feed';
+            
+            // Handle errors
+            videoFeed.onerror = function() {
+                alert('Error connecting to video feed. Please try again.');
+                // Show button again and hide video container
+                document.querySelector('.start-session-btn').style.display = 'block';
+                videoContainer.style.display = 'none';
+            };
+        });
+    </script>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="logo-dot"></div>
+                <span>ARCoach</span>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 ARCoach. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
