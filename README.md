@@ -126,11 +126,10 @@ This project was inspired by the challenges of overcrowded classrooms and the la
 - **Live Demo**: https://drive.google.com/file/d/1gyLBnlOzma6vv3NVdB8nexKuUgT7jXGh/view?usp=sharing
 - **Screenshots**:
 - 
-
+![2025-01-19 11-30-45 00_01_12_22 Still004](https://github.com/user-attachments/assets/de3382f7-5cf1-4fc6-9c09-d51bb09bad1a)
 ---![2025-01-19 11-30-45 00_00_22_35 Still002](https://github.com/user-attachments/assets/ea59d8f4-9554-4f49-9eb3-0e86c656ead7)
 ![2025-01-19 11-30-45 00_01_41_37 Still003](https://github.com/user-attachments/assets/e4667c79-84db-441a-894c-6d6e198c6c97)
 ![2025-01-19 11-30-45 00_00_49_47 Still007](https://github.com/user-attachments/assets/4f38365b-0a15-45c5-ab22-74c5dec35657)
-![2025-01-19 11-30-45 00_00_24_07 Still008](https://github.com/user-attachments/assets/31ad8aba-66e5-4ae8-bd24-c38c0748655b)
 
 
 ## 7. Team Members
