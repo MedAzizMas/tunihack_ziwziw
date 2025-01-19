@@ -58,19 +58,17 @@ This project was inspired by the challenges of overcrowded classrooms and the la
 
 ## 4. Installation and Usage
 
-### Prerequisites
-Ensure the following are installed:
-- Python (version XX or higher)
+
 
 ### Installation Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/projectname.git
+   git clone https://github.com/MedAzizMas/tunihack_ziwziw.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd projectname
+   cd tunihack_ziwziw
    ```
 
 3. Create a virtual environment:
@@ -125,10 +123,15 @@ Ensure the following are installed:
 
 ## 6. Demo
 
-- **Live Demo**: [Insert URL]
-- **Screenshots**: [Add images or GIFs showcasing features]
+- **Live Demo**: https://drive.google.com/file/d/1gyLBnlOzma6vv3NVdB8nexKuUgT7jXGh/view?usp=sharing
+- **Screenshots**:
+- 
 
----
+---![2025-01-19 11-30-45 00_00_22_35 Still002](https://github.com/user-attachments/assets/ea59d8f4-9554-4f49-9eb3-0e86c656ead7)
+![2025-01-19 11-30-45 00_01_41_37 Still003](https://github.com/user-attachments/assets/e4667c79-84db-441a-894c-6d6e198c6c97)
+![2025-01-19 11-30-45 00_00_49_47 Still007](https://github.com/user-attachments/assets/4f38365b-0a15-45c5-ab22-74c5dec35657)
+![2025-01-19 11-30-45 00_00_24_07 Still008](https://github.com/user-attachments/assets/31ad8aba-66e5-4ae8-bd24-c38c0748655b)
+
 
 ## 7. Team Members
 
