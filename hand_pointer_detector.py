@@ -32,7 +32,14 @@ class HandPointerDetector:
                 "name": "Squat Analyzer"
             },
             {
-                "x": 240, "y": 325,  # Start button
+                "x": 240, "y": 325,  # New 3D controller button
+                "w": 160, "h": 60,
+                "color": (0, 200, 0),
+                "count": 0,
+                "name": "3D Controller"
+            },
+            {
+                "x": 240, "y": 425,  # Start button
                 "w": 160, "h": 60,
                 "color": (0, 200, 0),
                 "count": 0,

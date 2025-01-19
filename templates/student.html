@@ -165,65 +165,82 @@
             transform: translateY(-2px);
         }
 
-        .cards-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .stats {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f8f9fa;
         }
-
-        .card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+        
+        .stats h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             opacity: 0;
             transform: translateY(30px);
-        }
-
-        .card.animate {
             animation: fadeUpIn 0.8s ease-out forwards;
         }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .card:hover img {
-            transform: scale(1.1);
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .card-location {
+        
+        .stats p {
+            font-size: 1.2rem;
             color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.2s forwards;
         }
-
-        .card-price {
-            color: var(--orange);
-            font-weight: 600;
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-header h3 {
             font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--orange);
+        }
+        
+        .stat-header p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-value p {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--orange);
+        }
+        
+        .stat-value span {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        @keyframes fadeUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .footer {
@@ -272,6 +289,150 @@
             color: #aaa;
             font-size: 0.8rem;
         }
+        .leaderboard {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        
+        .leaderboard h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+        
+        .leaderboard p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.2s forwards;
+        }
+        
+        .activity-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .activity-btn {
+            background-color: var(--orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .activity-btn:hover {
+            background-color: var(--orange-light);
+        }
+        
+        .leaderboard {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        
+        .leaderboard h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+        
+        .leaderboard p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out 0.2s forwards;
+        }
+        
+        .activity-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .activity-btn {
+            background-color: var(--orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .activity-btn:hover {
+            background-color: var(--orange-light);
+        }
+        
+        .leaderboard-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .leaderboard-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            display: block;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpIn 0.8s ease-out forwards;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f7f7f7;
+            font-weight: bold;
+        }
+        
+        td {
+            background-color: #fff;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        @keyframes fadeUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
 
         @keyframes slideDown {
             from {
@@ -284,16 +445,7 @@
             }
         }
 
-        @keyframes fadeUpIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      
 
         @keyframes pulse {
             0% {
@@ -319,57 +471,199 @@
                 <span>ARCoach</span>
             </div>
             <div class="nav-links">
-                <a href="/"">Home</a>
+                <a href="/">Home</a>
                 <a href="/coach">Live Coach</a>
+                <a href="/yoga">Yoga</a>
                 <a href="/student">Student Space</a>
                 <a href="/stats">General Stats</a>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Train Smarter, See Further, Achieve More. <span style="color: var(--orange)">ARCoach</span></h1>
-        <p>Reach your full potential thanks to our AI based personal trainer.</p>
-        <!--<div class="search-container">
-            <input type="text" class="search-input" placeholder="Where would you like to go?">
-            <input type="text" class="search-input" placeholder="Check in - Check out">
-            <input type="text" class="search-input" placeholder="2 guests">
-            <button class="search-btn">Search</button>
-        </div>-->
+    <section class="stats">
+        <br></br>
+        <br></br>
+        <h1>Performance Insights <span style="color: var(--orange)">ARCoach</span></h1>
+        <p>Track the key metrics of your progress and performance with ARCoach's cutting-edge statistics engine.</p>
+    
+        <div class="stats-container">
+            <!-- Stat 1: Workout Accuracy -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Workout Accuracy</h3>
+                    <p>Measure the precision of every rep and set with real-time feedback.</p>
+                </div>
+                <div class="stat-value">
+                    <p>98% <span>accuracy</span></p>
+                </div>
+            </div>
+    
+            <!-- Stat 2: Progress Over Time -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Progress Over Time</h3>
+                    <p>See how your performance improves with detailed historical data.</p>
+                </div>
+                <div class="stat-value">
+                    <p>+25% <span>Improvement</span></p>
+                </div>
+            </div>
+    
+            <!-- Stat 3: Coach Insights -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Coach Insights</h3>
+                    <p>Get in-depth analytics on your form, speed, and endurance.</p>
+                </div>
+                <div class="stat-value">
+                    <p>80% <span>Improved Form</span></p>
+                </div>
+            </div>
+    
+            <!-- Stat 4: Time Spent -->
+            <div class="stat">
+                <div class="stat-header">
+                    <h3>Time Spent Training</h3>
+                    <p>Track your commitment and dedication through weekly training time.</p>
+                </div>
+                <div class="stat-value">
+                    <p>50+ <span>hours</span></p>
+                </div>
+            </div>
+        </div>
     </section>
-
-    <div class="cards-container">
-    <!-- Card 1: Interactive Workouts -->
-    <div class="card">
-        <img src="https://eonreality.com/wp-content/uploads/2024/12/How-to-Build-a-Strong-Personal-Brand-on-Social-Media-3.png" alt="Interactive Workouts">
-        <div class="card-content">
-            <h3 class="card-title">Interactive AR Workouts</h3>
-            <p class="card-location">Achieve precision with real-time guidance from your AR coach.</p>
-            <button class="search-btn">Start Training</button>
+    <section class="leaderboard">
+        <br><br>
+        <h1>Top Performers <span style="color: var(--orange)">ARCoach</span></h1>
+        <p>Check out the best performances in various activity types. Switch between them to see the rankings.</p>
+    
+        <div class="activity-selector">
+            <button class="activity-btn" data-activity="workout">Workout</button>
+            <button class="activity-btn" data-activity="run">Running</button>
+            <button class="activity-btn" data-activity="cycling">Cycling</button>
         </div>
-    </div>
-
-    <!-- Card 2: Coach Space -->
-    <div class="card">
-        <img src="https://www.cui.edu/Portals/0/uploadedimages/AcademicPrograms/Graduate/Coaching/track-landing-bg.jpg" alt="Perfect Your Form">
-        <div class="card-content">
-            <h3 class="card-title">Monitor student progress</h3>
-            <p class="card-location">Insights into student performance.</p>
-            <button class="search-btn">Learn More</button>
+    
+        <div class="leaderboard-container">
+            <div class="leaderboard-card" data-activity="workout">
+                <h3>Top 5 Workouts</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>50 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>48 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Alex Johnson</td>
+                            <td>45 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Emily Davis</td>
+                            <td>42 Reps</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Chris Lee</td>
+                            <td>40 Reps</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="leaderboard-card" data-activity="run" style="display:none;">
+                <h3>Top 5 Runners</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Distance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sarah Kim</td>
+                            <td>12.5 km</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Robert White</td>
+                            <td>11.8 km</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mia Brown</td>
+                            <td>11.5 km</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Michael Green</td>
+                            <td>11.2 km</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Laura Scott</td>
+                            <td>11.0 km</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="leaderboard-card" data-activity="cycling" style="display:none;">
+                <h3>Top 5 Cyclists</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Distance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Jack Taylor</td>
+                            <td>50 km</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Laura Kim</td>
+                            <td>47 km</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Steve Harris</td>
+                            <td>45 km</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Nicole Adams</td>
+                            <td>42 km</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Daniel Martinez</td>
+                            <td>40 km</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-
-    <!-- Card 3: Progress Visualization -->
-    <div class="card">
-        <img src="https://img.freepik.com/free-photo/full-shot-man-doing-sport-with-stats_23-2150040493.jpg" alt="Track Your Progress">
-        <div class="card-content">
-            <h3 class="card-title">Track Your Progress</h3>
-            <p class="card-location">Visualize your achievements and milestones in stunning AR detail.</p>
-            <button class="search-btn">View Stats</button>
-        </div>
-    </div>
-</div>
-
+    </section>
+    
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
@@ -440,4 +734,4 @@
         });
     </script>
 </body>
-</html>            
+</html>

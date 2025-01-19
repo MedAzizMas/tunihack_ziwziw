@@ -3,6 +3,88 @@
 <head>
     <link rel="stylesheet" type="text/css" href='{{ url_for('static',filename='css/specific_yoga.css') }}'>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --orange: #ff6b00;
+            --orange-light: #ff8533;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--orange);
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--orange);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--orange); /* Changed to orange */
+            position: relative;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--orange);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
         .yoga-container {
             position: relative;
             width: 100%;
@@ -45,22 +127,42 @@
             overflow: hidden;
             z-index: 10;
         }
+        .asan-gif {
+  position: absolute;   /* Positions it relative to the page */
+  left: 10px;           /* Adjust the left value to your preference */
+  top: 50%;             /* Vertically center it */
+  transform: translateY(-50%); /* Perfectly centers it */
+  width: 150px;         /* Width of the GIF */
+  height: auto;         /* Maintain aspect ratio */
+}
+
     </style>
 </head>
 <body>
-    <h2 class="yoga-head">Vrksasana Asana</h2>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-dot"></div>
+                <span>ARCoach</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/coach">Live Coach</a>
+                <a href="/yoga">Yoga</a>
+                <a href="/student">Student Space</a>
+                <a href="/stats">General Stats</a>
+            </div>
+        </nav>
+    </header>
+    <h2 class="yoga-head">Warrior 2</h2>
     <hr class="hr">
-    
+
     <div class="yoga-container">
         <div class="video-section">
             <!-- Video feed with explicit dimensions -->
             <img id="videoFeed" class="video-feed" src="{{ url_for('video') }}" alt="Yoga Pose Analysis">
             
-            <!-- Accuracy overlay -->
-            <div class="accuracy-display">
-                <div>Accuracy</div>
-                <div id="accuracyValue" style="font-size: 24px; font-weight: bold;">0%</div>
-            </div>
+    
             
             <!-- Reference GIF 
             <div class="gif-reference">
